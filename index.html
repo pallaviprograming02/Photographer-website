@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>YourName — Photographer | Weddings • Portraits • Commercial</title>
+  <meta name="description"
+    content="Professional photographer — wedding, portrait and editorial photography. Based in Mumbai. Book a session or view portfolio." />
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header class="site-header" role="banner">
+    <div class="wrap header-row">
+      <a class="brand" href="#">YourName<span class="accent">.</span></a>
+      <nav class="main-nav" role="navigation" aria-label="Main">
+        <a href="#home">Home</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#services">Services</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button id="menuBtn" class="menu-btn" aria-expanded="false" aria-controls="mobileNav">☰</button>
+    </div>
+
+    <!-- mobile nav -->
+    <div id="mobileNav" class="mobile-nav" aria-hidden="true">
+      <a href="#home">Home</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#services">Services</a>
+      <a href="#testimonials">Testimonials</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section id="home" class="hero">
+      <div class="wrap hero-grid">
+        <div class="hero-content">
+          <h1>Capturing moments that become stories.</h1>
+          <p class="lede">Fine art & lifestyle photographer — weddings, portraits, editorial. Available for travel.</p>
+          <div class="actions">
+            <a class="btn" href="#contact">Book a Session</a>
+            <button id="viewGalleryBtn" class="btn btn-ghost">View Gallery</button>
+          </div>
+        </div>
+        <div class="hero-media" aria-hidden="true">
+          <img loading="lazy"
+            src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=1600"
+            alt="Hero sample image" class="cover" />
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section id="gallery" class="wrap section">
+      <h2>Gallery</h2>
+      <p class="muted">Click any image to open larger — images lazy-load for performance.</p>
+
+      <!-- Category Filter -->
+      <div class="filters">
+        <button class="filter-btn active" data-filter="All">All</button>
+        <button class="filter-btn" data-filter="Wedding">Wedding</button>
+        <button class="filter-btn" data-filter="Haldi">Haldi</button>
+        <button class="filter-btn" data-filter="Mehandi">Mehandi</button>
+        <button class="filter-btn" data-filter="Portrait">Portrait</button>
+      </div>
+      <div id="galleryGrid" class="grid gallery-grid" aria-live="polite">
+        <!-- Gallery dynamically rendered by script.js -->
+      </div>
+
+      <!-- accessible lightbox -->
+      <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-hidden="true">
+        <button id="lbClose" class="lb-close" aria-label="Close">✕</button>
+        <button id="lbPrev" class="lb-nav lb-prev" aria-label="Previous">‹</button>
+        <div class="lb-body">
+          <img id="lbImage" alt="">
+          <p id="lbCaption" class="muted"></p>
+        </div>
+        <button id="lbNext" class="lb-nav lb-next" aria-label="Next">›</button>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" class="wrap section alt">
+      <h2>Services & Pricing</h2>
+      <div class="grid services-grid">
+        <article class="card">
+          <h3>Wedding</h3>
+          <p class="price">From ₹40,000</p>
+          <ul class="muted">
+            <li>Full-day coverage</li>
+            <li>2 photographers, highlights film</li>
+            <li>Online gallery, 50+ edited images</li>
+          </ul>
+          <button class="btn" data-action="book" data-service="Wedding">Enquire / Book</button>
+        </article>
+        <article class="card">
+          <h3>Portrait</h3>
+          <p class="price">From ₹6,500</p>
+          <ul class="muted">
+            <li>1-hour studio or location</li>
+            <li>10 retouched images</li>
+            <li>Print release</li>
+          </ul>
+          <button class="btn" data-action="book" data-service="Portrait">Book</button>
+        </article>
+        <article class="card">
+          <h3>Drone Photography</h3>
+          <p class="price">From ₹15,000</p>
+          <ul class="muted">
+            <li>4K Aerial Video & Photos</li>
+            <li>Cinematic Angles</li>
+            <li>Perfect for Events & Real Estate</li>
+          </ul>
+          <button class="btn" data-action="book" data-service="Drone">Book Drone</button>
+        </article>
+        <article class="card">
+          <h3>Commercial & Editorial</h3>
+          <p class="price">Contact for quote</p>
+          <ul class="muted">
+            <li>Creative direction & high-res deliverables</li>
+            <li>Usage & licensing options</li>
+          </ul>
+          <button class="btn" data-action="book" data-service="Commercial">Get Quote</button>
+        </article>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section id="testimonials" class="wrap section">
+      <h2>Testimonials</h2>
+      <div class="carousel" id="testCarousel" aria-roledescription="carousel">
+        <blockquote class="slide">“They captured our day perfectly.”<cite>— Riya & Sameer</cite></blockquote>
+        <blockquote class="slide">“Patient, creative and professional.”<cite>— Ankit</cite></blockquote>
+        <blockquote class="slide">“Amazing portrait session.”<cite>— Meera</cite></blockquote>
+      </div>
+    </section>
+
+    <!-- CONTACT + BOOKING (modal) -->
+    <section id="contact" class="wrap section alt">
+      <h2>Contact & Booking</h2>
+      <div class="grid contact-grid">
+        <form id="contactForm" class="card form" aria-labelledby="contactHeading" novalidate>
+          <h3 id="contactHeading">Send a message via WhatsApp</h3>
+          <label>Full name<input required name="name" id="name" type="text" placeholder="Your full name"></label>
+          <label>Email<input required name="email" id="email" type="email" placeholder="you@example.com"></label>
+          <label>Phone<input required name="phone" id="phone" type="tel" placeholder="+91 9XXXXXXXXX"></label>
+          <label>Message<textarea name="message" id="message" rows="4"
+              placeholder="Tell me about your shoot"></textarea></label>
+          <div class="row">
+            <button class="btn" type="submit">Send on WhatsApp</button>
+            <a href="tel:+919763098110" class="btn btn-ghost">Call Now</a>
+            <button type="button" class="btn btn-ghost" id="openBooking">Book a Session</button>
+          </div>
+          <p id="contactStatus" role="status" class="muted"></p>
+        </form>
+
+        <aside class="card contact-info">
+          <h3>Studio Info</h3>
+          <p class="muted">Based in Mumbai • Available for travel</p>
+          <p><strong>Email:</strong> <a href="mailto:you@domain.com">you@domain.com</a></p>
+          <p><strong>Phone:</strong> <a href="tel:+919763098110">+91 97630 98110</a></p>
+          <div class="socials">
+            <a href="#" aria-label="Instagram">Instagram</a>
+            <a href="#" aria-label="Behance">Behance</a>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <small>© <span id="year"></span> Pallavipandit — All rights reserved. | <a href="admin.html">Admin Login</a></small>
+    </div>
+  </footer>
+
+  <!-- WhatsApp floating -->
+  <a class="whatsapp" href="https://wa.me/919763098110?text=Hi%20I'd%20like%20to%20book%20a%20session" target="_blank"
+    rel="noopener" aria-label="Open WhatsApp chat">💬</a>
+
+  <!-- BOOKING MODAL -->
+  <div id="bookingModal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-inner">
+      <button id="closeBooking" class="modal-close" aria-label="Close booking">✕</button>
+      <h3>Book a session</h3>
+      <form id="bookingForm" class="form" novalidate>
+        <label>Name<input id="bname" name="name" required></label>
+        <label>Email<input id="bemail" name="email" type="email" required></label>
+        <label>Phone<input id="bphone" name="phone" required></label>
+        <label>Service
+          <select id="bservice" name="service">
+            <option>Wedding</option>
+            <option>Portrait</option>
+            <option>Drone Photography</option>
+            <option>Commercial</option>
+            <option>Other</option>
+          </select>
+        </label>
+        <label>Date<input id="bdate" name="date" type="date"></label>
+        <label>Notes<textarea id="bnotes" name="notes"></textarea></label>
+        <div class="row">
+          <button class="btn" type="submit">Book via WhatsApp</button>
+          <a href="tel:+919763098110" class="btn btn-ghost">Call to Book</a>
+          <button type="button" class="btn btn-ghost" id="bookingCancel">Cancel</button>
+        </div>
+        <p id="bookingStatus" role="status" class="muted"></p>
+      </form>
+    </div>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="script.js" defer></script>
+</body>
+
+</html>

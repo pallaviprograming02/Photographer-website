@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Admin Dashboard — YourName Photographer</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        /* Inline admin specific styles for simplicity, could move to style.css */
+        .admin-login {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg);
+        }
+
+        .admin-dashboard {
+            display: none;
+            /* Hidden by default */
+            padding-top: 6rem;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .tab-btn {
+            padding: 1rem 2rem;
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-weight: 600;
+            border-bottom: 2px solid transparent;
+            transition: var(--transition);
+        }
+
+        .tab-btn.active {
+            color: var(--accent);
+            border-bottom-color: var(--accent);
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Orders Table */
+        .orders-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--surface);
+            border-radius: var(--radius);
+            overflow: hidden;
+        }
+
+        .orders-table th,
+        .orders-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .orders-table th {
+            background: var(--surface-alt);
+            font-weight: 600;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .status-Pending {
+            background: #f59e0b;
+            color: #000;
+        }
+
+        .status-Accepted {
+            background: #10b981;
+            color: #000;
+        }
+
+        .status-Rejected {
+            background: #ef4444;
+            color: #fff;
+        }
+
+        /* Photo Manager */
+        .photo-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .admin-card {
+            position: relative;
+        }
+
+        .delete-btn {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            background: rgba(239, 68, 68, 0.9);
+            color: white;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- LOGIN -->
+    <section id="loginSection" class="admin-login">
+        <div class="card form" style="width: 100%; max-width: 400px;">
+            <h2>Admin Access</h2>
+            <p class="muted">Enter password to continue.</p>
+            <form id="loginForm">
+                <label>Password<input type="password" id="password" required></label>
+                <button class="btn" type="submit" style="width: 100%">Login</button>
+                <p id="loginError" class="muted" style="color: var(--accent); margin-top: 1rem;"></p>
+            </form>
+        </div>
+    </section>
+
+    <!-- DASHBOARD -->
+    <div id="dashboardSection" class="admin-dashboard">
+        <header class="site-header">
+            <div class="wrap header-row">
+                <span class="brand">Admin Panel</span>
+                <button id="logoutBtn" class="btn btn-ghost"
+                    style="font-size: 0.9rem; padding: 0.5rem 1rem;">Logout</button>
+            </div>
+        </header>
+
+        <main class="wrap">
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="orders">Bookings & Orders</button>
+                <button class="tab-btn" data-tab="photos">Gallery Photos</button>
+            </div>
+
+            <!-- ORDERS TAB -->
+            <section id="orders" class="tab-content active">
+                <div class="card" style="padding: 0; overflow-x: auto;">
+                    <table class="orders-table">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Service</th>
+                                <th>Client</th>
+                                <th>Contact</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ordersBody">
+                            <!-- JS rendered -->
+                        </tbody>
+                    </table>
+                    <p id="noOrders" style="padding: 2rem; text-align: center; display: none;">No orders found.</p>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="admin.js"></script>
+</body>
+
+</html>
